@@ -10,22 +10,19 @@
  * @return {ListNode}
  */
 var middleNode = function(head) {
-    let size = 0;
+    let size = 1;
     let currentNode = head;
+    let middleNode = head;
 
-    while (currentNode) {
+    while (currentNode.next) {
         size++;
+        
+        if (size % 2 === 0) {
+            middleNode = middleNode.next;
+        }
+
         currentNode = currentNode.next;
     }
 
-    const mid = Math.floor(size / 2);
-    let answer = head;
-
-    console.log(mid);
-
-    for (let i = 1; i <= mid; i++) {
-        answer = answer.next;
-    }
-
-    return answer;
+    return middleNode;
 };
