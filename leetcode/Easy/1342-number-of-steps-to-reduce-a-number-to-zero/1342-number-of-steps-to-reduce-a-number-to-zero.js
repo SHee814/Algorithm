@@ -3,18 +3,7 @@
  * @return {number}
  */
 var numberOfSteps = function(num) {
-    let n = num;
-    let count = 0;
+    const binary = num.toString(2);
 
-    while (n > 0) {
-        if (n % 2 > 0) {
-            n--;
-        } else {
-            n /= 2;
-        }
-
-        count++;
-    }
-
-    return count;
+    return binary.length + binary.split('').reduce((acc, x) => acc + +x, 0) - 1;
 };
