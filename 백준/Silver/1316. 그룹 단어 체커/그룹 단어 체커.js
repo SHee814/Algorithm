@@ -3,21 +3,20 @@ const input = fs.readFileSync(0, 'utf-8').toString().trim().split('\n');
 const N = +input[0];
 let answer = 0;
 
-for (let i = 1; i <= N; i++) {
-    const word = input[i];
-    const reversed = word.split('').reverse().join('');
-    const charSet = Array.from(new Set(word));
+for (let n = 1; n <= N; n++) {
+    const word = input[n];
     let isGroupWord = true;
     
-    for (let char of charSet) {
-        const startIdx = word.indexOf(char);
-        const endIdx = word.length - 1 - reversed.indexOf(char);
-        const count = word.match(new RegExp(char, 'g')).length;
-        
-        if (count > 1 && startIdx + count <= endIdx) {
+    for (let i = 0; i < word.length - 2; i++) {
+        for (let j = i + 1; j < word.length; j++) {
+            if (word[i] !== word[j]) continue;
+            if (j === i + 1) break;
+            
             isGroupWord = false;
             break;
         }
+        
+        if (!isGroupWord) break;
     }
     
     if (isGroupWord) answer++;
