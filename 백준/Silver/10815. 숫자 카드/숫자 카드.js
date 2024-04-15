@@ -3,17 +3,11 @@ const N = +input[0];
 const M = +input[2];
 const cards = input[1].split(' ').map(Number);
 const nums = input[3].split(' ').map(Number);
-const cardMap = new Map();
+const cardSet = new Set(cards);
 const answer = [];
 
-for (let card of cards) {
-    if (cardMap.has(card)) continue;
-    
-    cardMap.set(card, 1);
-}
-
 for (let n of nums) {
-    answer.push(cardMap.has(n) ? 1 : 0);
+    answer.push(cardSet.has(n) ? 1 : 0);
 }
 
 console.log(answer.join(' '));
