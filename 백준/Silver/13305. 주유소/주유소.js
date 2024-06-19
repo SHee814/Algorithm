@@ -1,10 +1,10 @@
 const fs = require('fs');
 const input = fs.readFileSync(0, 'utf-8').toString().trim().split('\n');
 const N = +input[0];
-const dist = input[1].split(' ').map(Number);
-const price = input[2].split(' ').map(Number);
+const dist = input[1].split(' ').map(BigInt);
+const price = input[2].split(' ').map(BigInt);
 let current = 0;
-let cost = 0;
+let cost = 0n;
 
 while (current < N - 1) {
     let next = current + 1;
@@ -19,4 +19,4 @@ while (current < N - 1) {
     current = next;
 }
 
-console.log(cost);
+console.log(String(cost));
