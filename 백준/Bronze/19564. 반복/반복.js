@@ -1,17 +1,8 @@
 const target = require('fs').readFileSync(0, 'utf-8').toString().trim();
-let word = '';
-let count = 0;
+let count = 1;
 
-for (let t of target) {
-    if (word.length === 0) {
-        word += t;
-        count++;
-        continue;
-    }
-    
-    if (word[word.length - 1].charCodeAt() >= t.charCodeAt()) count++;
-    
-    word += t;
+for (let i = 1; i < target.length; i++) {
+    if (target[i - 1].charCodeAt() >= target[i].charCodeAt()) count++;
 }
 
 console.log(count);
