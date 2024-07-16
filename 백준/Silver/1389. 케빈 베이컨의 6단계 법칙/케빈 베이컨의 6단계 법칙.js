@@ -1,45 +1,48 @@
 const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin', 'utf8').trim().split('\n');
+const input = fs
+    .readFileSync(0, 'utf-8')
+    .toString()
+    .trim()
+    .split('\n')
+    .map(x => x.split(' ').map(Number));
+const [N, M] = input[0];
+const relationship = Array.from(new Array(N), () => []);
+let minStageSum = Infinity;
+let targetUser = Infinity;
 
-const [N, M] = input[0].split(' ').map(Number);
-const graph = Array.from({ length: N }, () => []);
-
-for (let i = 1; i <= M; i++) {
-  const [a, b] = input[i].split(' ').map(Number);
-  graph[a - 1].push(b - 1);
-  graph[b - 1].push(a - 1);
+for (let [a, b] of input.slice(1)) {
+    relationship[a - 1].push(b);
+    relationship[b - 1].push(a);
 }
 
-function bfs(start) {
-  const queue = [start];
-  const visited = new Array(N).fill(-1);
-  visited[start] = 0;
-
-  while (queue.length > 0) {
-    const current = queue.shift();
-
-    for (const next of graph[current]) {
-      if (visited[next] === -1) {
-        visited[next] = visited[current] + 1;
-        queue.push(next);
-      }
+for (let n = 1; n <= N; n++) {
+    const memo = new Array(N).fill(-1);
+    const queue = [n];
+    let index = 0;
+    memo[n - 1] = 0;
+    
+    while (index < queue.length) {
+        const current = queue[index++];
+        const friends = relationship[current - 1];
+        
+        for (let f of friends) {
+            if (memo[f - 1] >= 0) continue;
+            
+            memo[f - 1] = memo[current - 1] + 1;
+            queue.push(f);
+        }
     }
-  }
-
-  return visited.reduce((acc, val) => acc + val, 0);
+    
+    const stageSum = memo.reduce((acc, x) => acc + x, 0);
+    
+    if (stageSum === minStageSum) {
+        targetUser = Math.min(targetUser, n);
+    }
+    
+    if (stageSum < minStageSum) {
+        minStageSum = stageSum;
+        targetUser = n;
+    }
 }
 
-let minSum = Infinity;
-let minUser = 1;
-
-for (let i = 0; i < N; i++) {
-  const sum = bfs(i);
-  if (sum < minSum) {
-    minSum = sum;
-    minUser = i + 1;
-  } else if (sum === minSum && i + 1 < minUser) {
-    minUser = i + 1;
-  }
-}
-
-console.log(minUser);
+console.log(targetUser);
