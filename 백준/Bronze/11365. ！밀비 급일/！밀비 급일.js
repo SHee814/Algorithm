@@ -3,14 +3,7 @@ let answer = '';
 let index = 0;
 
 while (index < input.length - 1) {
-    const code = input[index++];
-    let decode = '';
-    
-    for (let i = 0; i < code.length; i++) {
-        decode += code[code.length - 1 - i];
-    }
-    
-    answer += `${decode}\n`;
+    answer += `${input[index++].split('').reverse().join('')}\n`;
 }
 
 console.log(answer);
