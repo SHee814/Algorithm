@@ -3,45 +3,26 @@ const input = fs.readFileSync(0, 'utf-8').toString().trim().split('\n');
 const [N, M] = input[0].split(' ').map(Number);
 const S = input[1];
 const vowelSet = new Set(['A', 'E', 'I', 'O', 'U']);
-const removeIndexSet = new Set();
+let result = '';
 
-function generateName() {
-    let name = '';
+for (let s of S) {
+    const length = result.length;
     
-    for (let i = 0; i < N; i++) {
-        if (!removeIndexSet.has(i)) name += S[i];
-    }
-    
-    return name;
-}
-
-function checkName(name) {
-    const len = name.length;
-    
-    if (name[len - 2] !== 'A' || name[len - 3] !== 'A') return false;
-    if (vowelSet.has(name[len - 1])) return false;
-    
-    return true;
-}
-
-function dfs(si) {
-    if (removeIndexSet.size === N - M) {
-        const name = generateName(removeIndexSet);
-        
-        if (checkName(name)) {
-            console.log(`YES\n${name}`);
-            process.exit();
+    if (length < M - 3) {
+        result += s;
+    } else if (length < M - 1) {
+        if (s === 'A') {
+            result += s;
         }
-        
-        return;
-    }
-    
-    for (let i = si; i < N; i++) {
-        removeIndexSet.add(i);
-        dfs(i + 1);
-        removeIndexSet.delete(i);
+    } else if (length === M - 1) {
+        if (!vowelSet.has(s)) {
+            result += s;
+        }
     }
 }
 
-dfs(0);
-console.log('NO');
+if (result.length === M) {
+    console.log(`YES\n${result}`);
+} else {
+    console.log('NO');
+}
