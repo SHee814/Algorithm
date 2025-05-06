@@ -1,4 +1,2 @@
-import sys
-
-a, b, c = map(int, sys.stdin.readline().split())
+a, b, c = map(int, input().split())
 print(a + b + c)
