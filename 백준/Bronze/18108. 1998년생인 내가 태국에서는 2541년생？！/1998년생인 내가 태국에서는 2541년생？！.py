@@ -1,4 +1,3 @@
-import sys
-
-year = int(sys.stdin.readline())
-print(year - 543)
+y = int(input())
+d = 2541 - 1998
+print (y - d)
