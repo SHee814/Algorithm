@@ -1,5 +1,6 @@
-import sys
-
-a = int(sys.stdin.readline())
-b = int(sys.stdin.readline())
-print(f"{a*(b%10)}\n{a*((b%100//10))}\n{a*(b//100)}\n{a*b}")
+a = int(input())
+b = int(input())
+print(a * (b % 10))
+print(a * ((b // 10) % 10))
+print(a * (b // 100))
+print(a * b)
