@@ -1,15 +1,16 @@
 const fs = require('fs');
-const input = fs.readFileSync(0, 'utf-8').toString().trim().split('\n');
-let answer = '';
+const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+const max = Math.max(...input.map(e => e.length));
+const words = [];
 
-for (let c = 0; c < 15; c++) {
-    for (let r = 0; r < 5; r++) {
-        const val = input[r][c];
-        
-        if (val === ' ' || val === undefined) continue;
-        
-        answer += val;
+for (let i = 0; i < max; i++) {
+    const result = [];
+    
+    for (let j = 0; j < 5; j++) {
+        result.push(input[j][i]);
     }
+    
+    words.push(result.join(''));
 }
 
-console.log(answer);
+console.log(words.join(''));
