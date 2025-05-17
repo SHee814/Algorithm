@@ -4,15 +4,15 @@
 
 ### 성능 요약
 
-메모리: 56784 KB, 시간: 400 ms
+메모리: 133136 KB, 시간: 2996 ms
 
 ### 분류
 
-자료 구조, 해시를 사용한 집합과 맵
+자료 구조, 집합과 맵, 해시를 사용한 집합과 맵
 
 ### 제출 일자
 
-2024년 4월 15일 18:05:43
+2025년 5월 17일 11:52:00
 
 ### 문제 설명
 
@@ -110,11 +110,11 @@
 
 <p><img alt="" src="https://www.acmicpc.net/upload/201004/pf.PNG" style="height:183px; width:274px"></p>
 
-<p><img alt="" src="https://www.acmicpc.net/upload/201004/pg.PNG" style="height:181px; width:274px"></p>
+<p><img alt="" src="" style="height:181px; width:274px"></p>
 
-<p><img alt="" src="https://www.acmicpc.net/upload/201004/ph.PNG" style="height:184px; width:274px"></p>
+<p><img alt="" src="" style="height:184px; width:274px"></p>
 
-<p><img alt="" src="https://www.acmicpc.net/upload/201004/pi.PNG" style="height:184px; width:274px"></p>
+<p><img alt="" src="" style="height:184px; width:274px"></p>
 
 <p>이다솜 : 휴... 이겼다.</p>
 
