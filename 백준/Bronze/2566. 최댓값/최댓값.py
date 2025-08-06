@@ -1,24 +1,13 @@
-import sys
+max = -1
 
-board = []
-
-for line in sys.stdin:
-    row = list(map(int, line.rstrip().split()))
-    board.append(row)
-
-max_value = -1
-x = 0
-y = 0
-
-for i in range(9):
-    for j in range(9):
-        current_value = board[i][j]
-        
-        if max_value < current_value:
-            max_value = current_value
-            x = i
-            y = j
-
-print(max_value)
-print(f'{x+1} {y+1}')
-        
+for i in range(0, 9):
+    row = list(map(int, input().split()))
+    
+    for j in range(0, 9):
+        if (row[j] >= max):
+            r = i + 1
+            c = j + 1
+            max = row[j]
+            
+print(max)
+print(r, c)
