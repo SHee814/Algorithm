@@ -1,5 +1,4 @@
 import string
 
-S = input()
-alphabet = string.ascii_lowercase
-print(' '.join(map(lambda x: str(S.find(x)), alphabet)))
+s = input()
+print(' '.join([str(s.find(i)) for i in string.ascii_lowercase]))
