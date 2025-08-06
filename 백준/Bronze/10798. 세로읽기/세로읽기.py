@@ -1,20 +1,13 @@
 import sys
 
-board = []
-max_length = 0
-
-for line in sys.stdin:
-    s = list(line.rstrip())
-    board.append(s)
-    max_length = max(max_length, len(s))
-
+board = list(map(lambda row: row.rstrip(), sys.stdin.readlines()))
+w = max(map(lambda row: len(row), board))
+h = len(board)
 result = ''
 
-for i in range(max_length):
-    for j in range(5):
-        if (i >= len(board[j])):
-            continue
-
-        result += board[j][i]
+for c in range(0, w):
+    for r in range(0, h):
+        if (len(board[r]) > c):
+            result += board[r][c]
 
 print(result)
