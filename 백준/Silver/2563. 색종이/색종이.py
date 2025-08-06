@@ -1,18 +1,14 @@
 import sys
 
-T = int(input())
-paper = [[False for _ in range(100)] for _ in range(100)]
-area = 0
+board = [[1 for i in range(100)] for j in range(100)]
+N = int(input())
+result = 0
 
 for line in sys.stdin:
-    x, y = map(int, line.rstrip().split())
-    
-    for i in range(10):
-        for j in range(10):
-            pos = paper[x-1+i][y-1+j]
-            
-            if not pos:
-                area += 1
-                paper[x-1+i][y-1+j] = True
+    x, y = map(int, line.split())
+    for i in range(x - 1, x + 9):
+        for j in range(y - 1, y + 9):
+            result += board[i][j]
+            board[i][j] = 0
 
-print(area)
+print(result)
