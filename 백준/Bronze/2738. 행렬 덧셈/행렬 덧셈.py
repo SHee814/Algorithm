@@ -1,21 +1,14 @@
-import sys
-
 N, M = map(int, input().split())
-A = []
-B = []
+A = [list(map(int, input().split())) for i in range(0, N)]
+B = [list(map(int, input().split())) for i in range(0, N)]
+C = []
 
-for idx, line in enumerate(sys.stdin):
-    row = list(map(int, line.rstrip().split()))
-    
-    if idx < N:
-        A.append(row)
-    else:
-        B.append(row)
-
-for i in range(N):
+for i in range(0, N):
     row = []
     
-    for j in range(M):
-        row.append(A[i][j] + B[i][j])
+    for j in range(0, M):
+        row.append(str(A[i][j] + B[i][j]))
 
-    print(' '.join(map(str, row)))
+    C.append(row)
+    
+print('\n'.join(map(lambda row: ' '.join(row), C)))
