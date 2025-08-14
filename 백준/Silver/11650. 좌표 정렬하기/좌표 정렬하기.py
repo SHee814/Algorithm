@@ -1,11 +1,7 @@
+import sys
+
 N = int(input())
-coords = []
+coords = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+sorted_coords = sorted(coords, key=lambda x: (x[0], x[1]))
 
-for _ in range(N):
-    x, y = map(int, input().split())
-    coords.append([x, y])
-
-coords.sort(key=lambda x: (x[0], x[1]))
-
-for i in range(N):
-    print(f'{coords[i][0]} {coords[i][1]}')
+print('\n'.join(map(lambda x: ' '.join(map(str, x)), sorted_coords)))
