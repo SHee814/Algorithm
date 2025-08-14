@@ -1,19 +1,6 @@
+import sys
+
 N = int(input())
-list = []
+result = sorted([int(sys.stdin.readline()) for _ in range(N)])
 
-for _ in range(N):
-    n = int(input())
-    
-    if len(list) < 1:
-        list.append(n)
-        continue
-    
-    idx = 0
-    
-    while idx < len(list) and list[idx] < n:
-        idx += 1
-        
-    list.insert(idx, n)
-
-print('\n'.join(map(str, list)))
-        
+print('\n'.join(map(str, result)))
