@@ -1,15 +1,11 @@
+import sys
+
 N, M = map(int, input().split())
-S = set()
-cnt = 0
+S = set([sys.stdin.readline().rstrip() for _ in range(N)])
+count = 0
 
-for _ in range(N):
-    word = input()
-    S.add(word)
-    
 for _ in range(M):
-    word = input()
-    
-    if word in S:
-        cnt += 1
+    x = sys.stdin.readline().rstrip()
+    count += 1 if x in S else 0
 
-print(cnt)
+print(count)
