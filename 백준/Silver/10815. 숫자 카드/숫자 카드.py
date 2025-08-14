@@ -1,9 +1,7 @@
-N = int(input())
+int(input())
 cards = set(input().split())
-M = int(input())
-Q = input().split()
+int(input())
+numbers = input().split()
+result = ['1' if x in cards else '0' for x in numbers]
 
-for i in cards:
-    cards.add(i)
-
-print(' '.join(['1' if q in cards else '0' for q in Q]))
+print(' '.join(result))
