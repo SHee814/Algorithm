@@ -1,11 +1,9 @@
+import sys
+
 N = int(input())
-words = []
+data = list(set([sys.stdin.readline().strip() for _ in range(N)]))
+data.sort(key=lambda x: (len(x), x))
 
-for _ in range(N):
-    word = input()
-    
-    if word not in words:
-        words.append(word)
-
-words.sort(key=lambda x: (len(x), x))
-print('\n'.join(words))
+for i in data:
+    print(i)
+        
