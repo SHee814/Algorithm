@@ -1,11 +1,9 @@
 S = input()
-set_substring = set()
+nS = len(S)
+substring = set()
 
-for i in range(len(S)):
-    for j in range(i + 1, len(S) + 1):
-        substring = S[i:j]
-        
-        if substring not in set_substring:
-            set_substring.add(substring)
+for i in range(nS):
+    for j in range(i+1, nS+1):
+        substring.add(S[i:j])
 
-print(len(set_substring))
+print(len(substring))
