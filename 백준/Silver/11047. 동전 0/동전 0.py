@@ -1,13 +1,14 @@
 import sys
 
-N, K = map(int, input().split())
-coin = list(map(int, sys.stdin.readlines()))
-idx = len(coin)-1
+N, K = map(int,input().split())
+C = [int(x) for x in sys.stdin.readlines()]
 count = 0
+coin_idx = N-1
 
-while K > 0:
-    count += K // coin[idx]
-    K %= coin[idx]
-    idx -= 1
-
+while coin_idx >= 0:
+    coin = C[coin_idx]
+    count += K // coin
+    K = K % coin
+    coin_idx -= 1
+    
 print(count)
