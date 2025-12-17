@@ -1,11 +1,11 @@
 N = int(input())
-n = 667
-i = 1
+count = 0
+idx = 665
 
-while i < N:
-    if '666' in str(n):
-        i += 1
-        
-    n += 1
+while count < N:
+    idx += 1
 
-print(n - 1)
+    if str(idx).find('666') >= 0:
+        count += 1
+
+print(idx)
