@@ -1,11 +1,12 @@
-a, b, c, d, e, f = map(int, input().split())
+import sys
+
+a,b,c,d,e,f = map(int, input().split())
 
 for x in range(1000):
     for y in range(1000):
-        dx = [x, -x, x, -x]
-        dy = [y, y, -y, -y]
+        S = [[x,y],[x,-y],[-x,y],[-x,-y]]
         
-        for i in range(4):
-            if (a * dx[i] + b * dy[i] == c) and (d * dx[i] + e * dy[i] == f):
-                print(dx[i], dy[i])
-                exit()
+        for s in S:
+            if a * s[0] + b * s[1] == c and d * s[0] + e * s[1] == f:
+                print(s[0], s[1])
+                sys.exit()
