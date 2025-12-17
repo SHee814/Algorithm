@@ -1,9 +1,13 @@
 N = int(input())
-min_cnt = N
+idx_five = 0
+mv = N
 
-for x in range(N // 3 + 1):
-    for y in range(N // 5 + 1):
-        if 3 * x + 5 * y == N:
-            min_cnt = min(min_cnt, x + y)
+while idx_five * 5 <= N:
+    idx_three = (N - (idx_five * 5)) // 3
+    
+    if (idx_three * 3 + idx_five * 5 == N):
+        mv = min(mv, idx_three + idx_five)
 
-print(min_cnt if min_cnt < N else -1)
+    idx_five += 1
+        
+print(mv if mv != N else -1)
