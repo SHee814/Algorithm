@@ -1,10 +1,19 @@
+import sys
+
 N = int(input())
 
-for i in range(1, N):
-    digits = map(int, list(str(i)))
+for i in range(N):
+    n = i
+    v = i
     
-    if sum(digits) + i == N:
+    while n >= 10:
+        v += n % 10
+        n = n // 10
+        
+    v += n
+    
+    if v == N:
         print(i)
-        exit()
-
+        sys.exit()
+        
 print(0)
