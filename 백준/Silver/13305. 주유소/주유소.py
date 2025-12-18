@@ -1,13 +1,18 @@
 N = int(input())
-dist = list(map(int, input().split()))
-price = list(map(int, input().split()))
-current_price = price[0]
-x = 0
-cost = 0
+D = list(map(int, input().split()))
+C = list(map(int, input().split()))
+tc = 0
+d = 0
+ci = 0
+ti = 0
 
-while x < N - 1:
-    current_price = min(current_price, price[x])
-    cost += current_price * dist[x]
-    x += 1
+while ci < N-1:
+    while ci == ti or (ti < N-1 and C[ci] < C[ti]):
+        d += D[ti]
+        ti += 1
 
-print(cost)
+    tc += d * C[ci]
+    d = 0
+    ci = ti
+    
+print(tc)
