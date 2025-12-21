@@ -1,21 +1,15 @@
 import sys
 
-for line in sys.stdin:
-    sides = list(map(int, line.rstrip().split()))
-    sides.sort()
-    sides.reverse()
-    a, b, c = sides
-    
-    if a + b + c == 0:
-        break;
-    
-    if a >= b + c:
-        print('Invalid')
-        continue
-
-    if a == b == c:
-        print('Equilateral')
-    elif a == b or b == c or c == a:
-        print('Isosceles')
+for row in sys.stdin.readlines():
+    x, y, z = sorted(map(int, row.split()))
+    if x + y + z == 0:
+        break
+        
+    if x + y <= z:
+        print("Invalid")
+    elif x == y and y == z and z == x:
+        print("Equilateral")
+    elif x != y and y != z and z != x:
+        print("Scalene")
     else:
-        print('Scalene')
+        print("Isosceles")
