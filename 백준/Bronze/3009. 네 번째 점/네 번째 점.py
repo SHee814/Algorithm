@@ -1,23 +1,19 @@
-X = []
-Y = []
+import sys
 
-for _ in range(3):
-    x, y = map(int, input().split())
-    X.append(x)
-    Y.append(y)
+set_x = set()
+set_y = set()
 
-if X[0] == X[1]:
-    nx = X[2]
-elif X[0] == X[2]:
-    nx = X[1]
-else:
-    nx = X[0]
+for row in sys.stdin.readlines():
+    x, y = map(int, row.split())
     
-if Y[0] == Y[1]:
-    ny = Y[2]
-elif Y[0] == Y[2]:
-    ny = Y[1]
-else:
-    ny = Y[0]
+    if x in set_x:
+        set_x.remove(x)
+    else:
+        set_x.add(x)
+        
+    if y in set_y:
+        set_y.remove(y)
+    else:
+        set_y.add(y)
 
-print(f'{nx} {ny}')
+print(f'{next(iter(set_x))} {next(iter(set_y))}')
