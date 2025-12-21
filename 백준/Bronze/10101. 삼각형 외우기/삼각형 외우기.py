@@ -1,12 +1,12 @@
-a = int(input())
-b = int(input())
-c = int(input())
+import sys
 
-if not a + b + c == 180:
-    print('Error')
-elif a == b == c:
-    print('Equilateral')
-elif a == b or b == c or a == c:
-    print('Isosceles')
+A, B, C = map(int, sys.stdin.readlines())
+
+if A + B + C != 180:
+    print("Error")
+elif A == B and B == C and C == A:
+    print("Equilateral")
+elif A != B and B != C and C != A:
+    print("Scalene")
 else:
-    print('Scalene')
+    print("Isosceles")
