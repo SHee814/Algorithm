@@ -1,7 +1,6 @@
-S = list(map(int, input().split()))
-S.sort()
-a, b, c = S
+A, B, C = sorted(map(int, input().split()))
 
-if a + b <= c:
-    print((a + b) * 2 - 1)
-else: print(a + b + c)
+if A + B > C:
+    print(A + B + C)
+else:
+    print(2 * (A + B) - 1)
