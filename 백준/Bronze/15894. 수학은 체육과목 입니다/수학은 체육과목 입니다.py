@@ -1,1 +1,1 @@
-print(int(input()) * 4)
+print(4 * int(input()))
