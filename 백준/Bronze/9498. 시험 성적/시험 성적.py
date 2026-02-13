@@ -1,12 +1,14 @@
-score = int(input())
+# 90 ~ 100점은 A, 80 ~ 89점은 B, 70 ~ 79점은 C, 60 ~ 69점은 D, 나머지 점수는 F
 
-if score >= 90:
+s = int(input())
+
+if s >= 90:
     print('A')
-elif score >= 80 and score < 90:
+elif s >= 80:
     print('B')
-elif score >= 70 and score < 80:
+elif s >= 70:
     print('C')
-elif score >= 60 and score < 70:
+elif s >= 60:
     print('D')
 else:
     print('F')
