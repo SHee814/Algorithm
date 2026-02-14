@@ -1,5 +1,7 @@
-nA, nB = map(int, input().split())
-set_A = set(map(int, input().split()))
-set_B = set(map(int, input().split()))
+import sys
 
-print(len(set_A ^ set_B))
+input = [map(int, line.split()) for line in sys.stdin.readlines()]
+A = set(input[1])
+B = set(input[2])
+C = A & B
+print(len(A) + len(B) - (2 * len(C)))
