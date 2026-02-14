@@ -1,15 +1,15 @@
 import sys
-input = sys.stdin.read().split('\n')
 
+input = list(map(lambda x: x.strip(), sys.stdin.readlines()))
 N, M = map(int, input[0].split())
-dictionary = {}
+pokemon_dict_forward = {}
+pokemon_dict_backward = {}
+result = []
+for num, pokemon in enumerate(input[1: N+1]):
+    pokemon_dict_forward[str(num+1)] = pokemon
+    pokemon_dict_backward[pokemon] = str(num+1)
 
-for i in range(1, N + 1):
-    name = input[i]
-    dictionary[name] = i
-    dictionary[str(i)] = name
-
+for query in input[N+1:]:
+    result.append(pokemon_dict_forward[query] if query.isdigit() else pokemon_dict_backward[query])
     
-for j in range(N + 1, N + M + 1):
-    q = input[j]
-    print(dictionary[q])
+print('\n'.join(result))
