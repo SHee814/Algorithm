@@ -1,13 +1,14 @@
-N = int(input())
+import sys
+
+input = sys.stdin.readlines()
 S = set()
 
-for _ in range(N):
-    name, act = input().split()
-
-    if act == 'enter':
-        S.add(name)
+for line in input[1:]:
+    name, event = line.split()
     
-    if act == 'leave' and name in S:
-        S.remove(name)
+    if (event == 'enter'):
+        S.add(name)
+    else:
+        S.discard(name)
 
-print('\n'.join(reversed(sorted(list(S)))))
+print('\n'.join(sorted(S, reverse=True)))
