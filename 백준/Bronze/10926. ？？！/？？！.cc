@@ -1,8 +1,7 @@
 #include <iostream>
-#include <string>
 
 int main() {
-    std::string id;
+    char id[53];
     std::cin >> id;
     std::cout << id << "??!";
 }
