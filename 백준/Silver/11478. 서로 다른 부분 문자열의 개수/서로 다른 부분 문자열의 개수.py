@@ -1,9 +1,10 @@
-S = input()
-nS = len(S)
-substring = set()
+S = input().strip()
+subset = set()
 
-for i in range(nS):
-    for j in range(i+1, nS+1):
-        substring.add(S[i:j])
-
-print(len(substring))
+for i in range(len(S)):
+    for j in range(i, len(S)):
+        sub = S[i:j+1]
+        subset.add(sub)
+        
+print(len(subset))
+        
