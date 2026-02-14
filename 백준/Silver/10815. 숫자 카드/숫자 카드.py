@@ -1,7 +1,10 @@
-int(input())
-cards = set(input().split())
-int(input())
-numbers = input().split()
-result = ['1' if x in cards else '0' for x in numbers]
+N = int(input())
+card_set = set(map(int, input().split()))
+M = int(input())
+card_list = map(int, input().split())
+result = []
 
+for card in card_list:
+    result.append('1' if card in card_set else '0')
+    
 print(' '.join(result))
