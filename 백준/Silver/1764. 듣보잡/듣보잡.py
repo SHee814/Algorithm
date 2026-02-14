@@ -1,11 +1,9 @@
 import sys
 
-input = sys.stdin.read().split('\n')
-
+input = sys.stdin.readlines()
 N, M = map(int, input[0].split())
-set_n = set(input[1:N + 1])
-set_m = set(input[N + 1:])
-union = list(set_n & set_m)
-
-print(len(union))
-print('\n'.join(sorted(union)))
+A = set(map(lambda x: x.strip(), input[1:N+1]))
+B = set(map(lambda x: x.strip(), input[N+1:]))
+C = A & B
+print(len(C))
+print('\n'.join(sorted(map(str, C))))
