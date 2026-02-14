@@ -1,10 +1,15 @@
-N = int(input())
-cards = {}
-C = map(int, input().split())
-M = int(input())
-Q = map(int, input().split())
+import sys
 
-for x in C:
-    cards[x] = cards.get(x, 0) + 1
+input = sys.stdin.readlines();
+card_dict = {}
+card_list = map(int, input[3].split())
 
-print(' '.join([str(cards[q]) if q in cards else '0' for q in Q]))
+for card in map(int, input[1].split()):
+    if card in card_dict:
+        card_dict[card] += 1
+    else:
+        card_dict[card] = 1
+
+result = [card_dict[card] if card in card_dict else 0 for card in card_list]
+
+print(' '.join(map(str, result)))
