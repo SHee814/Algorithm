@@ -1,11 +1,8 @@
 import sys
 
-N, M = map(int, input().split())
-S = set([sys.stdin.readline().rstrip() for _ in range(N)])
-count = 0
+input = sys.stdin.readlines()
+N, M = map(int, input[0].split())
+S = set(input[1:N+1])
+str_list = input[N+1:]
 
-for _ in range(M):
-    x = sys.stdin.readline().rstrip()
-    count += 1 if x in S else 0
-
-print(count)
+print(sum(1 for x in str_list if x in S))
