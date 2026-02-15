@@ -12,9 +12,5 @@ int main() {
         sum += a * b;
     }
     
-    if (sum == X) {
-        std::cout << "Yes";
-    } else {
-        std::cout << "No";
-    }
+    std::cout << ((sum == X) ? "Yes" : "No");
 }
