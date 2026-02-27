@@ -1,15 +1,12 @@
+import sys
+
 N = int(input())
 
-for _ in range(N):
-    PS = input()
-    cnt = 0
+for line in sys.stdin:
+    stack = 0
     
-    for i in PS:
-        if i == '(':
-            cnt += 1
-        else:
-            cnt -= 1
-            
-        if cnt < 0: break
-
-    print('YES' if cnt == 0 else 'NO')
+    for x in line.strip():
+        stack += 1 if x == '(' else -1
+        if stack < 0: break;
+        
+    print('YES' if stack == 0 else 'NO')
