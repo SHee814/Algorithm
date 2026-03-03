@@ -1,20 +1,21 @@
 N = int(input())
-line = list(reversed(list(map(int, input().split()))))
-wait = []
+Q = [int(x) for x in input().split()[::-1]]
+stack = []
 
-for i in range(1, N + 1):
-    if len(wait) > 0 and wait[-1] == i:
-        wait.pop()
+for i in range(1, N+1):
+    flag = True
+    
+    if stack and stack[-1] == i:
+        stack.pop()
         continue
-
-    while len(line) > 0 and line[-1] != i:
-        wait.append(line.pop())
-
-    if len(line) == 0:
-        print('Sad')
-        exit()
-
-    if line[-1] == i:
-        line.pop()
-
-print('Nice')
+    
+    while Q and Q[-1] != i:
+        stack.append(Q.pop())
+    
+    if Q:
+        Q.pop()
+    else:
+        flag = False
+        break
+        
+print('Nice' if flag else 'Sad')
