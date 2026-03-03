@@ -1,18 +1,17 @@
+import sys
 from collections import deque
 
-N = int(input())
-list_type = input().split()
-queue = [deque([x]) for (i, x) in enumerate(input().split()) if list_type[i] == '0']
-M = int(input())
-C = input().split()
-concatenated = deque()
-result = []
-
-for q in queue:
-    concatenated.extendleft(q)
+input = sys.stdin.read().splitlines()
+N = int(input[0])
+A = input[1].split()
+B = input[2].split()
+M = int(input[3])
+C = input[4].split()
+D = deque([b for i, b in enumerate(B[::-1]) if A[N-1-i] == "0"])
+S = []
 
 for c in C:
-    concatenated.append(c)
-    result.append(concatenated.popleft())
-    
-print(*result)
+    D.append(c)
+    S.append(D.popleft())
+
+print(' '.join(S))
