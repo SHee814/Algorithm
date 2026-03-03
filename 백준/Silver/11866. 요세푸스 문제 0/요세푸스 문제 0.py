@@ -1,13 +1,11 @@
+from collections import deque
+
 N, K = map(int, input().split())
-circle = [str(x) for x in range(1, N+1)]
-seq = []
-idx = K-1
+Q = deque([str(x) for x in range(1,N+1)])
+S = []
 
-while len(circle) > 0:
-    while idx >= len(circle):
-        idx -= len(circle)
-        
-    seq.append(circle.pop(idx))
-    idx += K-1
+while Q:
+    Q.rotate(-K+1)
+    S.append(Q.popleft())
 
-print(f'<{", ".join(seq)}>')
+print(f"<{', '.join(S)}>")
