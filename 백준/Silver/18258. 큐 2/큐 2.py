@@ -1,23 +1,22 @@
-from collections import deque
 import sys
+from collections import deque
 
 N = int(input())
-deq = deque()
+Q = deque([])
 
-for _ in range(N):
-    line = sys.stdin.readline().split()
+for line in sys.stdin.read().splitlines():
+    cmd = line.split()
     
-    if line[0] == 'push':
-        deq.append(line[1])
-    elif line[0] == 'pop':
-        print(deq.popleft() if len(deq) > 0 else -1)
-    elif line[0] == 'size':
-        print(len(deq))
-    elif line[0] == 'empty':
-        print(1 if len(deq) == 0 else 0)
-    elif line[0] == 'front':
-        print(deq[0] if len(deq) > 0 else -1)
-    elif line[0] == 'back':
-        print(deq[-1] if len(deq) > 0 else -1)
-    
-    
+    match cmd[0]:
+        case 'push':
+            Q.append(cmd[1])
+        case 'pop':
+            print(Q.popleft() if Q else -1)
+        case 'size':
+            print(len(Q))
+        case 'empty':
+            print(int(not Q))
+        case 'front':
+            print(Q[0] if Q else -1)
+        case 'back':
+            print(Q[-1] if Q else -1)
