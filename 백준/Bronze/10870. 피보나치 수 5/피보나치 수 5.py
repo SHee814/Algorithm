@@ -1,8 +1,8 @@
-N = int(input())
+n = int(input())
 
-def fibonacci(x):
-    if x < 2:
-        return x
-    return fibonacci(x-1) + fibonacci(x-2)
+def F(x):
+    if x < 2: return x
+    
+    return F(x-1) + F(x-2)
 
-print(fibonacci(N))
+print(F(n))
