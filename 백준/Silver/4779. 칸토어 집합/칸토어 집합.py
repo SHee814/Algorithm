@@ -1,14 +1,10 @@
 import sys
 
-def cantor(s):
-    ns = len(s)
-    k = int(ns/3)
+def C(x):
+    if x == 0: return '-'
     
-    if ns == 1:
-        return s
-    
-    return cantor(s[0:k]) + (' '*k) + cantor(s[2*k:])
+    m = ' ' * (3**(x-1))
+    return C(x-1) + m + C(x-1)
 
-for line in sys.stdin.readlines():
-    n = int(line)
-    print(cantor(('-'*(3**n)).rstrip()))
+for n in sys.stdin.read().splitlines():
+    print(C(int(n)))
