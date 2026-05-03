@@ -1,35 +1,38 @@
 def solution(park, routes):
-    N = len(park)
-    M = len(park[0])
-    si = 0
-    sj = 0
-    D = { 'E': [0, 1], 'W': [0, -1], 'S': [1, 0], 'N': [-1, 0] }
-
-    for i in range(N):
-        for j in range(M):
-            if (park[i][j] == 'S'):
-                si = i
-                sj = j
-                
+    H = len(park)
+    W = len(park[0])
+    park_map = []
+    D = {
+        "E": [0, 1],
+        "W": [0, -1],
+        "S": [1, 0],
+        "N": [-1, 0]
+    }
+    
+    for h in range(H):
+        row = []
+        for w in range(W):
+            x = park[h][w]
+            
+            if x == 'S':
+                ch, cw = h, w
+            
+            row.append(x)
+        park_map.append(row)
+    
     for route in routes:
-        op, n = route.split()
-        ci = si
-        cj = sj
-        is_valid = True
+        d, n = route.split()
+        nh, nw = ch, cw
         
         for _ in range(int(n)):
-            ni = ci + D[op][0]
-            nj = cj + D[op][1]
+            nh += D[d][0]
+            nw += D[d][1]
             
-            if (ni < 0 or nj < 0 or ni >= N or nj >= M or park[ni][nj] == 'X'):
-                is_valid = False
+            if (nh < 0 or nh >= H) or (nw < 0 or nw >= W) or park_map[nh][nw] == 'X':
+                nh, nw = ch, cw
                 break
-                
-            ci = ni
-            cj = nj
             
-        if is_valid:
-            si = ci
-            sj = cj
-            
-    return [si, sj]
+        ch, cw = nh, nw
+        
+    return ch, cw
+        
