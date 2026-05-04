@@ -1,7 +1,12 @@
+from math import sqrt
+
 def solution(brown, yellow):
-    for i in range(1, yellow+1):
-        if yellow % i == 0:
-            expected = (i + (yellow / i + 2)) * 2
-            
-            if expected == brown:
-                return [int(yellow / i)+2, i+2]
+    for h in range(1, int(sqrt(yellow))+1):
+        if yellow % h > 0:
+            continue
+        
+        w = yellow // h
+        
+        if (w+2+h)*2 == brown:
+            return [w+2, h+2]
+        
