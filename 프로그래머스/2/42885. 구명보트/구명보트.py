@@ -1,18 +1,21 @@
 def solution(people, limit):
-    P = sorted(people)
-    i = 0
-    j = len(P)-1
-    count = 0
+    l = 0
+    r = len(people)-1
+    answer = 0
     
-    while i <= j:
-        count += 1
-        if (i == j):
-            break
-        
-        if (P[i]+P[j] <= limit):
-            i += 1
-            j -= 1
+    people.sort()
+    
+    while l < r:
+        if people[l] + people[r] <= limit:
+            l += 1
+            r -= 1
         else:
-            j -= 1
+            r -=1
             
-    return count
+        answer += 1
+    
+    if l == r:
+        answer += 1
+        
+    return answer
+            
